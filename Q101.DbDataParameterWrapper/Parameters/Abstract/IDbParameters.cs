@@ -19,6 +19,16 @@ namespace Q101.DbDataParameterWrapper.Parameters.Abstract
         IDbParameterDirectionCreator Output { get; }
 
         /// <summary>
+        /// Исходящие параметры
+        /// </summary>
+        IDbParameterDirectionCreator InputOutput { get; }
+
+        /// <summary>
+        /// Исходящие параметры
+        /// </summary>
+        IDbParameterDirectionCreator ReturnValue { get; }
+
+        /// <summary>
         /// Параметры
         /// </summary>
         IEnumerable<IDbDataParameter> Parameters { get; set; }

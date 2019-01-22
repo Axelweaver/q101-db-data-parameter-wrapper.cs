@@ -13,6 +13,13 @@ namespace Q101.DbDataParameterWrapper.Parameters.Concrete.Oracle
         /// <inheritdoc />
         public IDbParameterDirectionCreator Output { get; }
 
+        /// <inheritdoc />
+        public IDbParameterDirectionCreator InputOutput { get; }
+
+        /// <inheritdoc />
+        public IDbParameterDirectionCreator ReturnValue { get; }
+
+
         private IEnumerable<IDbDataParameter> _parameters;
 
         /// <inheritdoc />
@@ -27,12 +34,16 @@ namespace Q101.DbDataParameterWrapper.Parameters.Concrete.Oracle
         }
 
         /// <summary>
-        /// Конструктор
+        /// 
         /// </summary>
         /// <param name="inputOracleParameterDirectionCreator"></param>
         /// <param name="outputOracleParameterDirectionCreator"></param>
+        /// <param name="inputOutputParameterDirectionCreator"></param>
+        /// <param name="returnValueParameterDirectionCreator"></param>
         public OracleParameters(IDbParameterDirectionCreator inputOracleParameterDirectionCreator,
-            IDbParameterDirectionCreator outputOracleParameterDirectionCreator)
+                                IDbParameterDirectionCreator outputOracleParameterDirectionCreator,
+                                IDbParameterDirectionCreator inputOutputParameterDirectionCreator,
+                                IDbParameterDirectionCreator returnValueParameterDirectionCreator)
         {
             Input = inputOracleParameterDirectionCreator;
 
@@ -41,6 +52,14 @@ namespace Q101.DbDataParameterWrapper.Parameters.Concrete.Oracle
             Output = outputOracleParameterDirectionCreator;
 
             Output.SetDirection(ParameterDirection.Output, this);
+
+            InputOutput = inputOutputParameterDirectionCreator;
+
+            InputOutput.SetDirection(ParameterDirection.InputOutput, this);
+
+            ReturnValue = returnValueParameterDirectionCreator;
+
+            ReturnValue.SetDirection(ParameterDirection.ReturnValue, this);
         }
     }
 }
