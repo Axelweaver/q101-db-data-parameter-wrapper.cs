@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
@@ -46,14 +49,15 @@
     <Compile Include="Converters\IOracleDbTypesConverter.cs" />
     <Compile Include="Converters\OracleDbTypesConverter.cs" />
     <Compile Include="Enums\ParameterDbType.cs" />
-    <Compile Include="Parameters\Abstract\IOracleParameterCreator.cs" />
-    <Compile Include="Parameters\Abstract\IOracleParameterDirectionCreator.cs" />
-    <Compile Include="Parameters\Abstract\IOracleParameters.cs" />
+    <Compile Include="Parameters\Abstract\IDbParameterCreator.cs" />
+    <Compile Include="Parameters\Abstract\IDbParameterDirectionCreator.cs" />
+    <Compile Include="Parameters\Abstract\IDbParameters.cs" />
+    <Compile Include="Parameters\Concrete\Oracle\OracleParameters.cs" />
+    <Compile Include="Parameters\Concrete\Oracle\OracleParameterCreator.cs" />
+    <Compile Include="Parameters\Concrete\Oracle\OracleParameterDirectionCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Parameters\Concrete\Oracle\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

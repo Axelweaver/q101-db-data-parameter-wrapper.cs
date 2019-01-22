@@ -6,7 +6,7 @@ namespace Q101.DbDataParameterWrapper.Parameters.Abstract
     /// <summary>
     /// Создатель параметра Oracle
     /// </summary>
-    public interface IOracleParameterCreator
+    public interface IDbParameterCreator
     {
         /// <summary>
         /// Создать параметер
