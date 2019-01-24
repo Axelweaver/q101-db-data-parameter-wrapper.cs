@@ -59,7 +59,7 @@ If you need to pass parameters to database with SQL query you use this syntax:
             }
 ```
 
-**But using this library you can do so **
+**But using this library you can do so**
 
 ```cs
 using System.Collections.Generic;
@@ -79,13 +79,24 @@ namespace ConsoleAppDbDataBaaseDataParamsWrapper
         /// </summary>
         private readonly IDbParameters _dbParameters;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbParameters">Parameters creator</param>
         public Repository(IDbParameters dbParameters)
         {
             _dbParameters = dbParameters;
         }
 
-        public IEnumerable<Student> GetStudents()
+        /// <summary>
+        /// Get students list
+        /// </summary>
+        /// <param name="city">City</param>
+        /// <param name="age">Age</param>
+        /// <param name="faculty">Faculty</param>
+        /// <param name="name">Name</param>
+        /// <returns></returns>
+        public IEnumerable<Student> GetStudents(string city, int age, string faculty, string name)
         {
             var query =
                 @"SELECT Id, Name, Age  
@@ -96,10 +107,10 @@ namespace ConsoleAppDbDataBaaseDataParamsWrapper
                         AND Name = :nameParameter";
 
             _dbParameters
-                .Input.AddVarchar2("cityParameter", "New York")
-                .Input.AddNumber("ageParameter", 18)
-                .Input.AddVarchar2("facultyParameter", "Maths")
-                .Input.AddVarchar2("nameParameter", "Alex");
+                .Input.AddVarchar2("cityParameter", city)
+                .Input.AddNumber("ageParameter", age)
+                .Input.AddVarchar2("facultyParameter", faculty)
+                .Input.AddVarchar2("nameParameter", name);
 
             using (var connection = new OracleConnection("Connection string..."))
             {
@@ -111,5 +122,6 @@ namespace ConsoleAppDbDataBaaseDataParamsWrapper
         }
     }
 }
+
 ```
 
