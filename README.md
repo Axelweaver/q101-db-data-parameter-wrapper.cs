@@ -54,6 +54,62 @@ If you need to pass parameters to database with SQL query you use this syntax:
             using (var connection = new OracleConnection("Connection string..."))
             {
                 var dbEntries = connection.Query(query, queryParameters);
-
+                
+                   . . .
             }
-'''
+```
+
+**But using this library you can do so **
+
+```cs
+using System.Collections.Generic;
+using Dapper;
+using Oracle.ManagedDataAccess.Client;
+using Q101.DbDataParameterWrapper.Parameters.Abstract;
+
+namespace ConsoleAppDbDataBaaseDataParamsWrapper
+{
+    /// <summary>
+    /// Some repository
+    /// </summary>
+    public class Repository
+    {
+        /// <summary>
+        /// Parameters creator
+        /// </summary>
+        private readonly IDbParameters _dbParameters;
+
+
+        public Repository(IDbParameters dbParameters)
+        {
+            _dbParameters = dbParameters;
+        }
+
+        public IEnumerable<Student> GetStudents()
+        {
+            var query =
+                @"SELECT Id, Name, Age  
+                    FROM Students 
+                    WHERE City = :cityParameter
+                        AND Age = :ageParameter
+                        AND Faculty = :facultyParameter
+                        AND Name = :nameParameter";
+
+            _dbParameters
+                .Input.AddVarchar2("cityParameter", "New York")
+                .Input.AddNumber("ageParameter", 18)
+                .Input.AddVarchar2("facultyParameter", "Maths")
+                .Input.AddVarchar2("nameParameter", "Alex");
+
+            using (var connection = new OracleConnection("Connection string..."))
+            {
+                var dbEntries = connection.Query<Student>(query, _dbParameters.Parameters);
+
+                return dbEntries;
+            }
+
+        }
+    }
+}
+```
+
