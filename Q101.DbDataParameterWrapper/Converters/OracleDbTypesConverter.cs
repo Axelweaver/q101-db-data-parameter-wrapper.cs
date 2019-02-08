@@ -5,23 +5,28 @@ using Q101.DbDataParameterWrapper.Enums;
 namespace Q101.DbDataParameterWrapper.Converters
 {
     /// <summary>
-    /// Конвертор типов данных БД
+    /// Converter DataBase types
     /// </summary>
     public class OracleDbTypesConverter : IOracleDbTypesConverter
     {
         /// <summary>
-        /// Справочник для конвертации
+        /// Dictionary to convert
         /// </summary>
         private readonly Dictionary<ParameterDbType, OracleDbType> _convertDictionary
             = new Dictionary<ParameterDbType, OracleDbType>()
             {
                 { ParameterDbType.Varchar2, OracleDbType.Varchar2 },
                 { ParameterDbType.Number, OracleDbType.Int32 },
-                { ParameterDbType.Date, OracleDbType.Date }
+                { ParameterDbType.Int, OracleDbType.Int32 },
+                { ParameterDbType.Decimal, OracleDbType.Decimal },
+                { ParameterDbType.Bool, OracleDbType.Boolean },
+                { ParameterDbType.Byte, OracleDbType.Byte },
+                { ParameterDbType.Date, OracleDbType.Date },
+                { ParameterDbType.DateTime, OracleDbType.TimeStamp }
             };
 
         /// <summary>
-        /// Конвертировать в тип данных параметра Oracle
+        /// To Convert into database type
         /// </summary>
         /// <param name="paramType"></param>
         /// <returns></returns>
