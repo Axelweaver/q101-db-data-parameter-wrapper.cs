@@ -35,9 +35,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,21 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\IOracleDbTypesConverter.cs" />
-    <Compile Include="Converters\OracleDbTypesConverter.cs" />
     <Compile Include="Enums\ParameterDbType.cs" />
-    <Compile Include="Parameters\Abstract\IDbParameterCreator.cs" />
-    <Compile Include="Parameters\Abstract\IDbParameterDirectionCreator.cs" />
-    <Compile Include="Parameters\Abstract\IDbParameters.cs" />
-    <Compile Include="Parameters\Concrete\Oracle\OracleParameters.cs" />
-    <Compile Include="Parameters\Concrete\Oracle\OracleParameterCreator.cs" />
-    <Compile Include="Parameters\Concrete\Oracle\OracleParameterDirectionCreator.cs" />
+    <Compile Include="Parameters\IDbParameterCreator.cs" />
+    <Compile Include="Parameters\IDbParameterDirectionCreator.cs" />
+    <Compile Include="Parameters\IDbParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
