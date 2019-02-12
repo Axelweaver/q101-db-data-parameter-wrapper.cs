@@ -3,6 +3,8 @@ wrapper that simplifies working with parameters passed to the database
 
 ### Nuget package link:
 [https://www.nuget.org/packages/Q101.DbDataParameterWrapper](https://www.nuget.org/packages/Q101.DbDataParameterWrapper/ "Nuget package link")
+### Nuget package link for Oracle:
+[https://www.nuget.org/packages/Q101.DbDataParameterWrapper.Oracle/1.0.0](https://www.nuget.org/packages/Q101.DbDataParameterWrapper.Oracle/1.0.0 "Nuget package link for Oracle")
 
 If you need to pass parameters to database with SQL query you use this syntax:
 
