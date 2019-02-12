@@ -1,14 +1,24 @@
 ﻿namespace Q101.DbDataParameterWrapper.Enums
 {
     /// <summary>
-    /// Тип базы данных для параметра
+    /// Database parameters types
     /// </summary>
     public enum ParameterDbType
     {
         /// <summary>
         /// Varchar2 type
         /// </summary>
+        NVarchar2,
+
+        /// <summary>
+        /// Varchar2 type
+        /// </summary>
         Varchar2,
+
+        /// <summary>
+        /// Varchar type
+        /// </summary>
+        Varchar,
 
         /// <summary>
         /// Number type
@@ -21,6 +31,16 @@
         Date,
 
         /// <summary>
+        /// DateTime type
+        /// </summary>
+        DateTime,
+
+        /// <summary>
+        /// Timestamp
+        /// </summary>
+        TimeStamp,
+
+        /// <summary>
         /// Boolean type
         /// </summary>
         Bool,
@@ -31,14 +51,14 @@
         Int,
 
         /// <summary>
+        /// Int64 type
+        /// </summary>
+        Int64,
+
+        /// <summary>
         /// Decimal type
         /// </summary>
         Decimal,
-
-        /// <summary>
-        /// DateTime (TimeStamp) type
-        /// </summary>
-        DateTime,
 
         /// <summary>
         /// Byte type
